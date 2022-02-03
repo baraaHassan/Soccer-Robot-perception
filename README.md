@@ -24,7 +24,7 @@ It consists of:
 ### Data processing
 #### Preprocessing
 To reduce the burden of computation during training phase, step 1., 2., and 3. were done in the preprocessing stage; to avoid computing them each time fetching the data using the dataloader. 
-1. Creating the heatmap images (the images with the blobs that represents the believe of the location of each object) (that will be used as target for the Detection dataset) from the Xml files.
+1. Creating the heatmap images (the images with the blobs that represents the believe of the location of each object) (that will be used as target images in the Detection dataset) from the Xml files. Where each channel of this heatmap images, represent the probability of the existance of one the 3 possible objects (i.e. ball, goalpost, robot).
 2. Resizing all the images to fixed size.
 3. Fixing the distribution of the segmentation target images values.
 4. Normalizing the images
@@ -32,7 +32,7 @@ To reduce the burden of computation during training phase, step 1., 2., and 3. w
 #### Real-time Processing
 - In the tensor space : converting segmentation target images from thier continuous values, into the class discrete values (i.e. 0 for background, 1 for line, 2 for the gamefield).   
 #### Post-processing
-- Using the opencV
+- Using the openCV function **findContours**, to detect the location of the objects in the output heatmaps (that are coming from the detection head)
 ### Data Imbalance
 - To mitigate the problem of the data imbalance, the Segmentation loss is having higher weight - than the Detection loss - in the total loss.
 
