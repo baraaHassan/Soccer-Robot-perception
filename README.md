@@ -1,6 +1,32 @@
 # Soccer_Robot_perception
 Code for the [RoboCup 2019 AdultSize Winner NimbRo](https://arxiv.org/abs/1912.07405)
 
+# Index
+- [Objective of the projectn](#objective-of-the-project)
+- [Architecture](#architecture)
+- [Dataset](#dataset)
+  - [Detection Dataset](#detection-dataset)
+  - [Segmentation Dataset](#segmentation-dataset)
+  - [Data Augmentation](#data-augmentation)
+  - [Data Split](#data-split)
+  - [Data Imbalance](#data-imbalance)
+  - [Problems in the Dataset](#problems-in-the-dataset)
+  - [Data Processing](#data-processing)
+    - [Preprocessing](#preprocessing)
+    - [Real-time Processing](#real-time-processing)
+    - [Post-processing](#post-processing)
+- [Training](#training)
+  - [Transfer Learning](#transfer-learning)
+- [Results](#results)
+  - [Output](#output)
+    - [Detection](#detection-output)
+    - [Segmentation](#segmentation-output)
+  - [Performance](#performance)
+    - [Detection](#detection-performance)
+    - [Segmentation](#segmentation-performance)
+- [Debug](#debug)
+- [Code Architecture](#code-architecture)
+
 ## Objective of the project
 It is to make a robot perception that outperforms humans in playing soccer in the game field. For this purpose, the Nimbronet2 is trying to mimic human perception by doing two tasks, one task to detect the ball, goalposts and other robots. The other task is to segment the field boundaries, to understand the scene, in which direction should Nimbro Robot shoot, and to ignore any objects outside the arena's boundaries.
 
@@ -57,17 +83,17 @@ To reduce the burden of computation during the training phase, steps 1., 2., and
 ### Transfer Learning
 - In the first 50 epochs, the encoder part's layers were frozen (the pre-trained Resnet18), and the learning was happening only for the decoder's layers. After those 50 epochs, the encoder was unfrozen back and the encoder and decoder were trained jointly.
 ## Results
-### output
-#### Detection
+### Output
+#### Detection Output
 ![Screenshot from 2022-02-04 02-25-36](https://user-images.githubusercontent.com/49837627/152457211-48ef6be1-d4c0-4b0a-879f-581da1c6c2b6.png)
 ![Screenshot from 2022-02-04 02-24-39](https://user-images.githubusercontent.com/49837627/152457264-938bb267-3b10-4ff1-95bb-04d0fd4bbffa.png)
-#### Segmentation
+#### Segmentation Output
 ![Screenshot from 2022-02-04 02-24-08](https://user-images.githubusercontent.com/49837627/152457308-8fff04a8-7dcc-4dd7-823d-f6a9b7c5b897.png)
 ![Screenshot from 2022-02-04 02-26-04](https://user-images.githubusercontent.com/49837627/152457320-e691933b-1c7d-4c2b-bc1a-5f34227556c8.png)
 ### Performance
-#### Detection
+#### Detection Performance
 ![Screenshot from 2022-02-04 02-02-46](https://user-images.githubusercontent.com/49837627/152457390-6fabb73d-a394-45f3-8389-02ad676d1912.png)
-#### Segmentation
+#### Segmentation Performance
 ![Screenshot from 2022-02-04 02-12-13](https://user-images.githubusercontent.com/49837627/152457422-8c48f2a1-101c-4a66-b3e1-577157013187.png)
 ## Debug
 In the debugging phase, I was trying to overfit one batch, to troubleshoot the problems, also I was removing the regaulizer, and making the model as simple as possible, to find the issues that I was facing.
