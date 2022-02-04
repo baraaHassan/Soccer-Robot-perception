@@ -44,6 +44,8 @@ To reduce the burden of computation during the training phase, steps 1., 2., and
 - Normalizing the images according to the ImageNet distribution, before feeding them to the model.
 - In the tensor space: converting segmentation target images from their continuous values, into the class discrete values (i.e. 0 for background, 1 for line, 2 for the game field).   
 #### Post-processing
+- The output of the segmentation head (pixel-wise class index), is mapped back to each class color value!
+- The output of the detection head, is clipped for any value is out of the min and maximum ranges. 
 - Using the openCV function **findContours**, to detect the center of the detected objects in the output heatmaps (that are coming from the detection head). Where the label of the object can be inferred from the color of the detected object.
 ## Training
 - To mitigate the problem that the input images of the Segmentation and Detection Dataset are different, the model is being trained by fetching a batch of Detection dataset, computing its loss (**MSE** + **Variational loss**), then fetching a batch of Segmentation Dataset, computing its loss (**Cross-Entropy** + **Variational loss**), and then the gradient of the total of both losses is being computed (to update the model's parameters). 
