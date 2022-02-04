@@ -69,7 +69,16 @@ To reduce the burden of computation during the training phase, steps 1., 2., and
 ![Screenshot from 2022-02-04 02-02-46](https://user-images.githubusercontent.com/49837627/152457390-6fabb73d-a394-45f3-8389-02ad676d1912.png)
 #### Segmentation
 ![Screenshot from 2022-02-04 02-12-13](https://user-images.githubusercontent.com/49837627/152457422-8c48f2a1-101c-4a66-b3e1-577157013187.png)
-## Code Architecture
+## Debug
+In the debugging phase, I was trying to overfit one batch, to troubleshoot the problems, also I was removing the regaulizer, and making the model as simple as possible, to find the issues that I was facing.
 
+## Code Architecture
+- **Pre-processing_functions.ipynb**: is containing the functions being used for the dataset preprocessing.
+- **Extra_Utilities.ipynb**: is containing some auxulary functions being used in the other files.
+- **Custom_Dataset.ipynb**: is containg the customized dataset classes for detection and segmentation.
+- **Nibronet2_Model.ipynb**: is containg the Nimbronet2 model archicture implementation.
+- **Training.ipynb**: is containg - the core of the project -, the implementation needed for the training iterations.
+- **Evaluation.ipynb**: is containing the testing phase implementations, and the computation of the performance metrics.
+- **Soccer Robot Perception Report.pdf**: is the detailed report about this project.
 
 For the details the report is in the file Soccer Robot Perception Report.pdf
